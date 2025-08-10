@@ -1,7 +1,7 @@
 // frontend/src/services/socket.js
 import io from "socket.io-client";
 //process.env.REACT_APP_API_URL || 
-const SOCKET_URL = "http://localhost:5000";
+const SOCKET_URL = "https://backend-mtly.onrender.com/";//"http://localhost:5000";
 
 class SocketService {
   constructor() {
