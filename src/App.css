@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Message animation */
+.message-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.message-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Typing indicator animation */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #9ca3af;
+  animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .mobile-header {
+    padding: 1rem;
+  }
+  
+  .message-bubble {
+    max-width: 85%;
+  }
+}
+
+/* Focus improvements for accessibility */
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+/* Button hover effects */
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Chat background pattern */
+.chat-background {
+  background-color: #f0f9f4;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #d1fae5 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, #d1fae5 2px, transparent 2px);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+}
+
+/* Status indicators */
+.status-sent {
+  color: #9ca3af;
+}
+
+.status-delivered {
+  color: #6b7280;
+}
+
+.status-read {
+  color: #3b82f6;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Enhanced message bubbles */
+.message-bubble-outgoing {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.message-bubble-incoming {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
+}
+
+/* Connection status */
+.connection-indicator {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.connection-online {
+  background-color: #10b981;
+  color: white;
+}
+
+.connection-offline {
+  background-color: #ef4444;
+  color: white;
+}
+
+/* Improved search input */
+.search-input {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.search-input:focus {
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat list improvements */
+.chat-item:hover {
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.05), transparent);
+}
+
+.chat-item.active {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+  border-right: 4px solid #10b981;
+}
+
+/* Send button animation */
+.send-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.send-button:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.send-button:active:before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-gray-900 {
+    background-color: #111827;
+  }
+  
+  .dark\:text-white {
+    color: white;
+  }
+  
+  .dark\:border-gray-700 {
+    border-color: #374151;
+  }
+}
