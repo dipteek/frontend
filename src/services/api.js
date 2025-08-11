@@ -1,7 +1,7 @@
 // frontend/src/services/api.js
 import axios from "axios";
 
-const BASE_URL = "https://backend-mtly.onrender.com/";
+const BASE_URL ="https://web-production-cc8be.up.railway.app"//"https://backend-mtly.onrender.com/";
 
 class APIService {
   constructor() {
