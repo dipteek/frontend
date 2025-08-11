@@ -21,8 +21,8 @@ class SocketService {
     console.log("Connecting to socket server:", SOCKET_URL);
 
     this.socket = io(SOCKET_URL, {
-      transports: ["websocket", "polling"],
-      timeout: 10000,
+      transports: ["polling"],//"websocket", 
+      timeout: 15000,
       forceNew: true,
       reconnection: true,
       reconnectionAttempts: this.maxReconnectAttempts,
